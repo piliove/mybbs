@@ -1,0 +1,86 @@
+<extend name="index/index" />
+<block name="main">
+	<div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">作品管理</span></div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="/index.php?m=admin&c=post&a=index" method="get">
+                    <input type="hidden" name="m" value="admin">
+                    <input type="hidden" name="c" value="post">
+                    <input type="hidden" name="a" value="index">
+                    <table class="search-tab">
+                        <tbody>
+                            <tr><!-- 
+                                <th width="120">选择分类:</th> -->
+                            <!--<td>
+                                    <select name="search-sort" id="">
+                                        <option value="">分区</option>
+                                    </select>
+                                </td> -->
+                                <th width="70">标题:</th>
+                                <td><input class="common-text" placeholder="关键字" name="title" value="" id="" type="text"></td>
+                                <td><input class="btn btn-primary btn2" value="查询" type="submit"></td>
+                            </tr>
+                    </tbody></table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-title">
+                    <div class="result-list">
+                        <a href="insert.html"><i class="icon-font"></i>新增作品</a>
+                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+                        <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
+                    </div>
+                </div>
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tbody><tr>
+                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
+                            <th>ID</th>
+                            <th>标题</th>
+                            <th>作者</th>
+                            <th>发布时间</th>
+                            <th>操作</th>
+                        </tr>
+                        <?php foreach($posts as $post): ?>
+                        <tr>
+                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
+
+                            <td><?=$post['pid']?></td>
+                            <td><?=$post['title']?></td>
+                            <td><?=$users[ $post['uid'] ]?></td>
+                            <td><?=date('Y-m-d H:i:s',$post['created_at'])?></td>
+                            <td>
+                                <?php if($post['is_jing']): ?>
+                                <a class="link-update" href="/index.php?m=admin&c=post&a=setnotjing&pid=<?=$post['pid']?>">取消加精</a>    
+                                <?php else: ?>
+                                <a class="link-update" href="/index.php?m=admin&c=post&a=setjing&pid=<?=$post['pid']?>">加精</a>
+                                <?php endif; ?> |
+                                <?php if($post['is_top']): ?>
+                                <a class="link-update" href="/index.php?m=admin&c=post&a=setnottop&pid=<?=$post['pid']?>">取消置顶</a>
+                                <?php else: ?>
+                                <a class="link-update" href="/index.php?m=admin&c=post&a=settop&pid=<?=$post['pid']?>">置顶</a>
+                                <?php endif; ?> |
+                                <?php if($post['is_display']): ?>
+                                <a class="link-update" href="/index.php?m=admin&c=post&a=notdisplays&pid=<?=$post['pid']?>">显示</a>
+                                <?php else: ?>
+                                <a class="link-update" href="/index.php?m=admin&c=post&a=displays&pid=<?=$post['pid']?>">隐藏</a>
+                                <?php endif; ?> |
+                                <a class="link-update" href="/index.php?m=admin&c=post&a=edit&pid=<?=$post['pid']?>">查看回复</a> |
+                                <a class="link-update" href="/index.php?m=admin&c=post&a=edit&pid=<?=$post['pid']?>">修改</a> |
+                                <a class="link-del" href="/index.php?m=admin&c=post&a=del&pid=<?=$post['pid']?>">删除</a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody></table>
+                    <div class="list-page"><?=$show?></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</block>

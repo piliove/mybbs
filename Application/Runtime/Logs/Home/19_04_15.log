@@ -1,0 +1,54 @@
+[ 2019-04-15T14:51:34+08:00 ] 127.0.0.1 /index.php?m=home&c=post&a=index&cid=5
+ERR: Cannot use object of type Think\Model as array
+
+[ 2019-04-15T14:54:33+08:00 ] 127.0.0.1 /index.php?m=home&c=post&a=index&cid=5
+ERR: Cannot use object of type Think\Model as array
+
+[ 2019-04-15T15:29:55+08:00 ] 127.0.0.1 /index.php?m=home&c=person&a=index
+ERR: 模板不存在:./Application/Home/View/Person/index.html
+
+[ 2019-04-15T16:21:21+08:00 ] 127.0.0.1 /index.php?m=home&c=replay&a=create
+ERR: 无法加载控制器:Replay
+
+[ 2019-04-15T19:52:52+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=28
+ERR: syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file
+
+[ 2019-04-15T20:46:14+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=28
+ERR: Cannot use object of type Think\Model as array
+
+[ 2019-04-15T20:46:20+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=28
+ERR: Cannot use object of type Think\Model as array
+
+[ 2019-04-15T20:46:37+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=28
+ERR: Cannot use object of type Think\Model as array
+
+[ 2019-04-15T20:53:21+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=save
+ERR: Cannot use object of type Think\Model as array
+
+[ 2019-04-15T21:10:44+08:00 ] 127.0.0.1 /index.php?m=home&c=person&a=index&uid=47
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2019-04-15T21:12:28+08:00 ] 127.0.0.1 /index.php?m=home&c=preson&a=index
+ERR: 无法加载控制器:Preson
+
+[ 2019-04-15T21:12:37+08:00 ] 127.0.0.1 /index.php?m=home&c=preson&a=index
+ERR: 无法加载控制器:Preson
+
+[ 2019-04-15T21:12:39+08:00 ] 127.0.0.1 /index.php?m=home&c=preson&a=index
+ERR: 无法加载控制器:Preson
+
+[ 2019-04-15T21:13:14+08:00 ] 127.0.0.1 /index.php?m=home&c=person&a=update&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2019-04-15T21:13:38+08:00 ] 127.0.0.1 /index.php?m=home&c=person&a=index&uid=47
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2019-04-15T21:13:50+08:00 ] 127.0.0.1 /index.php?m=home&c=person&a=index&uid=47
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2019-04-15T22:45:42+08:00 ] 127.0.0.1 /index.php?m=home&c=index&a=index
+ERR: syntax error, unexpected '='
+
+[ 2019-04-15T22:46:04+08:00 ] 127.0.0.1 /index.php?m=home&c=index&a=index
+ERR: syntax error, unexpected '='
+

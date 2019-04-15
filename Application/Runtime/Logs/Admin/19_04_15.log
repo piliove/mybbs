@@ -1,0 +1,29 @@
+[ 2019-04-15T14:04:46+08:00 ] 127.0.0.1 /index.php?m=admin&c=post&a=index
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : UPDATE `bbs_post` SET `is_display`='0' WHERE ( pid =  )
+
+[ 2019-04-15T14:11:44+08:00 ] 127.0.0.1 /index.php?m=admin&c=post&a=index
+ERR: syntax error, unexpected '}', expecting ';' or '{'
+
+[ 2019-04-15T16:33:10+08:00 ] 127.0.0.1 /index.php?m=admin&c=reply&a=create&pid=28
+ERR: 无法加载控制器:Reply
+
+[ 2019-04-15T16:33:33+08:00 ] 127.0.0.1 /index.php?m=admin&c=reply&a=create&pid=28
+ERR: 无法加载控制器:Reply
+
+[ 2019-04-15T21:24:11+08:00 ] 127.0.0.1 /index.php?m=admin&c=post&a=index&title=test&uname=a
+ERR: 1054:Unknown column 'uname' in 'where clause'
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `bbs_post` WHERE `title` = 'test' AND `uname` LIKE '%a%' LIMIT 1  
+
+[ 2019-04-15T22:15:20+08:00 ] 127.0.0.1 /index.php?m=admin&c=user&a=changepass
+ERR: 模板不存在:./Application/Admin/View/User/changepass.html
+
+[ 2019-04-15T22:25:40+08:00 ] 127.0.0.1 /index.php?m=admin&c=user&a=changepass&uid=47
+ERR: syntax error, unexpected ')'
+
+[ 2019-04-15T22:38:56+08:00 ] 127.0.0.1 /index.php?m=admin&c=user&a=inpass&uid=47
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2019-04-15T22:39:00+08:00 ] 127.0.0.1 /index.php?m=admin&c=user&a=inpass&uid=47
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
