@@ -42,21 +42,33 @@ class PostController extends CommonController
 
 	public function edit()
 	{
+		//获取表单中的pid
 		$pid = $_GET['pid'];
 
+		//从数据库中查找
 		$post = M('bbs_post')->find($pid);
 
-		$this->assign('post',$post);
+		//从数据库中查找
+		$users = M('bbs_user')->select();
+		$users = array_column($users,'uname','uid');
 
+		//分配变量,遍历显示
+		$this->assign('post',$post);
+		$this->assign('users',$users);
+
+		//渲染表单页面
 		$this->display();
 	}
 
 	public function update()
 	{
+		//获取url传来的参数id
 		$pid = $_GET['pid'];
 
+		//获取表单提交的数据
 		$data = $_POST;
 
+		//数据库操作,修改
 		$row = M('bbs_post')->where("pid = $pid")->save($data);
 
 		if ( $row ) {
@@ -69,10 +81,14 @@ class PostController extends CommonController
 	public function del()
 	{
 		$pid = $_GET['pid'];
+		
+		$condition['pid'] = $pid;
 
-		$row = M('bbs_post')->delete($pid);
+		//数据库操作,删除
+		$row1 = M('bbs_post')->where( $condition )->delete();
+		$row2 = M('bbs_reply')->where( $condition )->delete();
 
-		if ( $row ) {
+		if ( $row1 !== false && $row2 !== false ) {
 			$this->success('删除成功!','/index.php?m=admin&c=post&a=index');
 		} else {
 			$this->error('删除失败!');

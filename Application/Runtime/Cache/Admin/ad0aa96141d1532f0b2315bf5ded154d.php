@@ -22,7 +22,7 @@
             <ul class="top-info-list clearfix">
                 <li><?=$_SESSION['userInfo']['uname']?></li>
                 <li><a href="/index.php?m=admin&c=user&a=index"><?=$_SESSION['authInfo']?></a></li>
-                <li><a href="#">修改密码</a></li>
+                <li><a href="/index.php?m=admin&c=user&a=changepass&uid=<?=$_SESSION['userInfo']['uid']?>">修改密码</a></li>
                 <li><a href="/index.php?m=admin&c=login&a=logout">退出</a></li>
             </ul>
         </div>
@@ -87,7 +87,13 @@
                             <tr>
                                 <th><i class="require-red">*</i>用户ID：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="title" size="50" value="<?=$post['title']?>" type="text">
+                                    <input class="common-text required" id="title" name="title" size="50" disabled="disabled" value="<?=$post['uid']?>" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>用户名：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="title" size="50" disabled="disabled" value="<?=$users[ $post['uid'] ]?>" type="text">
                                 </td>
                             </tr>
                         	<tr>
@@ -103,7 +109,7 @@
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn-primary btn6 mr10" value="修改" type="submit">
                                     <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
                                 </td>
                             </tr>

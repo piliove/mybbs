@@ -36,6 +36,7 @@ class PostController extends CommonController
 
 		$data['uid'] = $_SESSION['usersInfo']['uid'];
 		$data['cid'] = $cid;
+		$data['is_display'] = 0;
  
 		//创建时间,修改时间
 		$data['created_at'] = $data['updated_at'] = time();
@@ -52,23 +53,42 @@ class PostController extends CommonController
 	//显示贴子列表
 	public function index()
 	{
+		//定义空的条件数组
+		// $condition = [];
+
+		//判断有没有板块名称
+		// if ( !empty($_GET['title']) ) {
+		// 	$condition['title'] = ['like',"%{$_GET['title']}%"];
+		// }
+
+		//实例化Post对象
+		$Post = M('bbs_post');
+
+		// 查询满足要求的总记录数
+		$count = $Post->where( $condition )->count();
+
+		// 实例化分页类 传入总记录数和每页显示的记录数(5) 每页显示5条记录
+		$Page = new \Think\Page($count,5);
+
 		//获取cid的数值
 		$cid = $_GET['cid'];
 
 		//获取数据库is_jing中的数值
-		$jings = M('bbs_post')->getField('pid,is_jing');
+		$jings = $Post->getField('pid,is_jing');
 
 		//获取数据库is_jing中的数值
-		$display = M('bbs_post')->getField('pid,is_display');
+		$display = $Post->getField('pid,is_display');
 
 		//获取数据库is_top中的数值
-		$tops = M('bbs_post')->getField('pid,is_top');
+		$tops = $Post->getField('pid,is_top');
 
 		if ( $tops == 0 ) {
-			$posts = M('bbs_post')->order("is_top desc")->where("cid='$cid'")->select();
+			$posts = $Post->order("is_top desc")->where("cid='$cid'")->limit($Page->firstRow.','.$Page->listRows)->select();
 		} else {
 			//从数据库中查找数据,并且降序排序
-			$posts = M('bbs_post')->order("is_top asc")->where("cid='$cid'")->select();
+			$posts = $Post->order("is_top asc")->where("cid='$cid'")->limit($Page->firstRow.','.$Page->listRows)->select();
+
+			//$posts = $Post->where( $condition )->limit($Page->firstRow.','.$Page->listRows)->select();
 		}
 
 		$links = M('bbs_links')->select();
@@ -84,7 +104,14 @@ class PostController extends CommonController
 		$this->assign('jings',$jings);
 		$this->assign('display',$display);
 
+		// 分页显示
+		$show_page = $Page->show();
+
+		//分配变量,让分页在html页面显示
+		$this->assign('show_page',$show_page);
+
 
 		$this->display();
 	}
+
 }

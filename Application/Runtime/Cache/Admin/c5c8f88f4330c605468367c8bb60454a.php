@@ -74,32 +74,50 @@
     </div>
     <!--/sidebar-->
     
-	<div class="main-wrap">
+    <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/index.php?m=admin&c=index&a=index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/index.php?m=admin&c=user&a=index">用户管理</a><span class="crumb-step">&gt;</span><span>新增用户</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="/index.php?m=admin&c=index&a=index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">作品管理</a><span class="crumb-step">&gt;</span><span>新增作品</span></div>
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="index.php?m=admin&c=part&a=save" method="post" id="myform" name="myform">
+                <form action="/index.php?m=admin&c=user&a=update&uid=<?=$users['uid']?>" method="post" id="myform" name="myform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
-                        <tbody>
+                        <tbody><tr>
+                            <th width="120"><i class="require-red">*</i>权限：</th>
+                            <td>
+                                <select name="auth" id="catid" class="required">
+                                    <option <?php if($users['auth']==1){echo 'selected';} ?> value="1">超级管理员</option>
+                                    <option <?php if($users['auth']==2){echo 'selected';} ?> value="2">管理员</option>
+                                    <option <?php if($users['auth']==3){echo 'selected';} ?> value="3">用户</option>
+                                </select>
+                            </td>
+                        </tr>
                             <tr>
-                                <th><i class="require-red">*</i>分区名称：</th>
+                                <th><i class="require-red">*</i>姓名：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="pname" size="50" value="" type="text">
+                                    <input class="common-text required" id="title" name="uname" size="50" value="<?=$users['uname']?>" type="text">
                                 </td>
                             </tr>
                             <tr>
-                                <th><i class="require-red">*</i>分区版主：</th>
+                                <th>性别：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="partname" size="50" value="" type="text">
+                                    <input class="common-text" name="sex" id="female" size="50" value="w" type="radio" <?php if($users['sex']=='w'){echo 'checked';} ?> ><label for="female">女</label>
+                                    <input class="common-text" name="sex" id="male" size="50" value="m" type="radio" <?php if($users['sex']=='m'){echo 'checked';} ?> ><label for="male">男</label>
+                                    <input class="common-text" name="sex" id="weizhi" size="50" value="x" type="radio" <?php if($users['sex']=='x'){echo 'checked';} ?> ><label for="weizhi">保密</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>更改头像：</th>
+                                <td>
+                                    <input name="uface" id="" type="file">
+                                    <img src="/<?=getSm($users['uface']);?>" >   
                                 </td>
                             </tr>
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input class="btn btn-primary btn6 mr10" value="添加" type="submit">
+                                    <input class="btn btn-primary btn6 mr10" value="修改" type="submit">
                                     <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
                                 </td>
                             </tr>

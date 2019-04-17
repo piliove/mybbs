@@ -57,7 +57,7 @@
 			<!--登陆部分start-->
 
 			<div id="login">
-				<?php if ( empty($_SESSION['flag']) ): ?>
+				<?php if ( empty($_SESSION['flagss']) ): ?>
 				<form action="/index.php?m=home&c=login&a=dologin" method="post">
 				  <table>
 					<tr>
@@ -93,7 +93,9 @@
 				<?php else: ?>
 
 					<div class="logintext-box"> 
-						欢迎登录: <a href="/index.php?m=home&c=person&a=index&uid=<?=$_SESSION['usersInfo']['uid']?>"><?=$_SESSION['usersInfo']['uname'];?></a>
+						欢迎登录: <?=$_SESSION['usersInfo']['uname']?>
+						<a href="/index.php?m=admin&c=login&a=login"><?php if($_SESSION['usersInfo']['auth'] <3 ){echo "登录后台";} ?></a>
+						<a href="/index.php?m=home&c=person&a=index&uid=<?=$_SESSION['usersInfo']['uid']?>"><?php if($_SESSION['usersInfo']['uname'] !== ''){echo "个人中心";} ?></a>
 						<span><a href="/index.php?m=home&c=login&a=logout">退出</a></span>
 					</div>
 					
@@ -122,38 +124,40 @@
 			
 			<!--搜索部分start-->
 			<div id="search">
-				<table cellpadding="0" cellspacing="0">
-				  <tr>
-					<td class="search_ico"></td>
-					<td class="search_input">
-					  <input type="text" name="search" x-webkit-speech speech placeholder="请输入搜索内容" />
-					</td>
-					<td class="search_select">
-					  <a href="">帖子</a>
-					  <span class="select"></span>
-					</td>
-					<td class="search_btn">
-					  <button>搜索</button>
-					</td>
-					<td class="search_hot">
-					  <div>
-						<strong>热搜:</strong>
-						<a href="#">交友</a>
-						<a href="#">教育</a>
-						<a href="#">幽默</a>
-						<a href="#">搞笑</a>
-						<a href="#">房产</a>
-						<a href="#">购物</a>
-						<a href="#">二手</a>
-						<a href="#">衣服</a>
-						<a href="#">鞋子</a>
-						<a href="#">帮助</a>
-						<a href="#">折扣</a>
-						<a href="#">电影</a>
-					  </div>
-					</td>
-				  </tr>
-				</table>
+				<form action="#" method="post">
+					<table cellpadding="0" cellspacing="0">
+					  <tr>
+						<td class="search_ico"></td>
+						<td class="search_input">
+						  <input type="text" name="search" x-webkit-speech speech placeholder="请输入搜索内容" />
+						</td>
+						<td class="search_select">
+						  <a href="">帖子</a>
+						  <span class="select"></span>
+						</td>
+						<td class="search_btn">
+						  <button>搜索</button>
+						</td>
+						<td class="search_hot">
+						  <div>
+							<strong>热搜:</strong>
+							<a href="#">交友</a>
+							<a href="#">教育</a>
+							<a href="#">幽默</a>
+							<a href="#">搞笑</a>
+							<a href="#">房产</a>
+							<a href="#">购物</a>
+							<a href="#">二手</a>
+							<a href="#">衣服</a>
+							<a href="#">鞋子</a>
+							<a href="#">帮助</a>
+							<a href="#">折扣</a>
+							<a href="#">电影</a>
+						  </div>
+						</td>
+					  </tr>
+					</table>
+				</form>
 			</div>
 			<!--搜索部分end-->
 			
@@ -217,7 +221,7 @@
 				
 				<!--帖子列表内容部分start-->
 				<?php foreach($posts as $post): ?>
-				<div class="post_content" style="display:<?php if($display[ $post['pid'] ]==1){echo 'none;';} else {echo 'block;';} ?>">
+				<div class="post_content" style="display:<?php if($display[ $post['pid'] ]==1){echo 'none;';}else {echo 'block;';} ?>">
 					<table cellspacing=0 cellpadding=0 width='100%'>
 						<tr>
 							<td class="list_title">
@@ -231,11 +235,12 @@
 				</div>
 				<?php endforeach; ?>
 				<!--帖子列表内容部分end-->
-				
+				<!-- <div class="pages" style="text-align:center;"><?=$show_page?></div> -->
 			</div>
 			<!--帖子列表部分end-->
 			
 
+<div class="list-page" style="text-align:center;"><?=$show_page?></div>
         <!--友情链接部分start-->
         <div id="friend_link">
             

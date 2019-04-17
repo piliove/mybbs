@@ -77,29 +77,44 @@
 	<div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/index.php?m=admin&c=index&a=index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/index.php?m=admin&c=user&a=index">用户管理</a><span class="crumb-step">&gt;</span><span>新增用户</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="/index.php?m=admin&amp;c=index&amp;a=index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">作品管理</a><span class="crumb-step">&gt;</span><span>新增作品</span></div>
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="index.php?m=admin&c=part&a=save" method="post" id="myform" name="myform">
+                <form action="/index.php?m=admin&amp;c=cate&amp;a=update&cid=<?=$_GET['cid']?>" method="post" id="myform" name="myform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody>
+                        	<tr>
+	                            <th width="120"><i class="require-red">*</i>所属分区：</th>
+	                            <td>
+	                                <select name="pid" id="catid" class="required">
+                                        <?php foreach($parts as $part): ?>
+		                                <option value="<?= $part['pid'] ?>" ><?= $part['pname'] ?>
+                                        <?php endforeach; ?>      
+                                        </option>
+	                            	</select>
+	                            </td>
+                        	</tr>
                             <tr>
-                                <th><i class="require-red">*</i>分区名称：</th>
+                                <th width="120"><i class="require-red">*</i>指定版主：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="pname" size="50" value="" type="text">
+                                    <select name="uname" id="catid" class="required">
+                                        <?php foreach($users as $user): ?>
+                                        <option value="<?= $user['uid'] ?>"><?= $user['uname'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
-                                <th><i class="require-red">*</i>分区版主：</th>
+                                <th><i class="require-red">*</i>板块名称：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="partname" size="50" value="" type="text">
+                                    <input class="common-text required" name="cname" size="50" value="<?= $cates['cname'] ?>" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input class="btn btn-primary btn6 mr10" value="添加" type="submit">
+                                    <input class="btn btn-primary btn6 mr10" value="修改" type="submit">
                                     <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
                                 </td>
                             </tr>

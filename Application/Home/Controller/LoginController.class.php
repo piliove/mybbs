@@ -22,7 +22,7 @@ class LoginController extends Controller
 
 		$_SESSION['usersInfo'] = $users;
 		//返回一个true标志位,登录true
-		$_SESSION['flag']      = true;
+		$_SESSION['flagss']      = true;
 
 		//验证密码
 		if ( $users && password_verify($upwd,$users['upwd']) ) {
@@ -35,7 +35,7 @@ class LoginController extends Controller
 	public function logout()
 	{
 		//返回一个标志位,退出 false
-		$_SESSION['flag'] = false;
+		$_SESSION['flagss'] = false;
 		$this->success('退出登录成功!','/');
 	}
 }

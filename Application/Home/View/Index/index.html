@@ -17,12 +17,26 @@
                 <!--分区标题部分end-->
                 
                 <!--分区内容部分start-->
-                
                 <div class="section_content">
                     <table cellspacing="0" cellspacing="0">
+                    <?php 
+                      // 求该分区下板块个数
+                      $n = count($part['sub']);
+
+                      //求板块应该是多少行 进一取整 
+                      $row = ceil($n / 3);
+
+                      $key = 0;
+                    ?>
+                    <?php for($i=1;$i<=$row;$i++): ?>
                     <tr>
-                      <?php foreach($part['sub'] as $k=>$cate): ?>
-                      <td width="320px;">
+                      <?php for($j=1;$j<=3;$j++): ?>
+                      <?php
+                        $cate = $part['sub'][$key];
+                        $key++;
+                        if ( $key>$n ) { break 2; }
+                      ?>
+                      <td width="33%">
                         <span class="section_content_ico">
                           <img src="/Public/Home/images/forum_new.gif" title="Discuz!程序发布" />
                         </span>
@@ -39,11 +53,11 @@
                           </dd>
                         </dl>
                       </td>
-                      <?php endforeach; ?>
+                      <?php endfor; ?>
                     <tr>
+                    <?php endfor; ?>
                     </table>
                 </div>
-                
                 <!--分区内容部分end-->
             </div>
             <?php endforeach; ?>

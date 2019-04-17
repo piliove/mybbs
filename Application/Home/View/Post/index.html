@@ -29,7 +29,7 @@
 				
 				<!--帖子列表内容部分start-->
 				<?php foreach($posts as $post): ?>
-				<div class="post_content" style="display:<?php if($display[ $post['pid'] ]==1){echo 'none;';} else {echo 'block;';} ?>">
+				<div class="post_content" style="display:<?php if($display[ $post['pid'] ]==1){echo 'none;';}else {echo 'block;';} ?>">
 					<table cellspacing=0 cellpadding=0 width='100%'>
 						<tr>
 							<td class="list_title">
@@ -43,7 +43,7 @@
 				</div>
 				<?php endforeach; ?>
 				<!--帖子列表内容部分end-->
-				
+				<!-- <div class="pages" style="text-align:center;"><?=$show_page?></div> -->
 			</div>
 			<!--帖子列表部分end-->
 			

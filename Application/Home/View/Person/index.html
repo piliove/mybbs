@@ -3,17 +3,17 @@
 		<!--内容部分start-->
 		<div class="content">			
 			<form action="/index.php?m=home&c=person&a=update&uid=<?=$_GET['uid']?>" method="post">
-				<table align="center" width="300" height="60">
+				<table align="center" width="500" height="60">
 					<tr>
-						<td><label>头像: </label></td>  
-                        <td><img src="/<?=getSm($users['uface']);?>" ></td>    
+                        <th><i class="require-red"></i><strong>头像：</strong></th>
+                        <td><img src="/<?=getSm($users['uface']);?>" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="uface" id="" type="file"></td>
                 	</tr>
 					<tr>
-						<td><label>用户名: </label></td>
+						<td><label><strong>用户名：</strong></label></td>
 						<td><input type="text" name="uname" value="<?=$users['uname']?>"></td>
 					</tr>
 					<tr>
-						<td><label>性别: </label></td>
+						<td><label><strong>性别：</strong></label></td>
 						<td>
 						<label><input type="radio" name="sex" id="w" <?php if($users['sex']=='w'){echo 'checked';} ?> >女</label>
 						<label><input type="radio" name="sex" id="m" <?php if($users['sex']=='m'){echo 'checked';} ?> >男</label>
@@ -21,7 +21,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td><label>手机号: </label></td>
+						<td><label><strong>手机号：</strong></label></td>
 						<td><input type="text" name="tel" value="<?=$users['tel']?>"></td>
 					</tr>
 					<tr>

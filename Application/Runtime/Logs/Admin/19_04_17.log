@@ -1,0 +1,20 @@
+[ 2019-04-17T14:01:54+08:00 ] 127.0.0.1 /index.php?m=admin&c=cate&a=update&cid=
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : UPDATE `bbs_cate` SET `pid`='1',`cname`='流浪地球2' WHERE ( cid= )
+
+[ 2019-04-17T14:50:45+08:00 ] 127.0.0.1 /index.php?m=admin&c=cate&a=update&cid=
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : UPDATE `bbs_cate` SET `pid`='1',`cname`='流浪地球2' WHERE ( cid= )
+
+[ 2019-04-17T16:33:44+08:00 ] 127.0.0.1 /index.php?m=admin&c=part&a=del&pid=8
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2019-04-17T16:41:33+08:00 ] 127.0.0.1 /index.php?m=admin&c=part&a=del&pid=8
+ERR: Cannot use object of type Think\Model as array
+
+[ 2019-04-17T16:44:05+08:00 ] 127.0.0.1 /index.php?m=admin&c=part&a=index
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2019-04-17T16:44:07+08:00 ] 127.0.0.1 /index.php?m=admin&c=part&a=index
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+

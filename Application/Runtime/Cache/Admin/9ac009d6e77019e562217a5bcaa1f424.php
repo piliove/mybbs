@@ -77,37 +77,68 @@
 	<div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/index.php?m=admin&c=index&a=index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/index.php?m=admin&c=user&a=index">用户管理</a><span class="crumb-step">&gt;</span><span>新增用户</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">作品管理</span></div>
         </div>
-        <div class="result-wrap">
-            <div class="result-content">
-                <form action="index.php?m=admin&c=part&a=save" method="post" id="myform" name="myform">
-                    <table class="insert-tab" width="100%">
-                        <tbody>
-                            <tr>
-                                <th><i class="require-red">*</i>分区名称：</th>
-                                <td>
-                                    <input class="common-text required" id="title" name="pname" size="50" value="" type="text">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><i class="require-red">*</i>分区版主：</th>
-                                <td>
-                                    <input class="common-text required" id="title" name="partname" size="50" value="" type="text">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <td>
-                                    <input class="btn btn-primary btn6 mr10" value="添加" type="submit">
-                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
-                                </td>
-                            </tr>
-                        </tbody></table>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="/index.php?m=admin&c=seem&a=index" method="get">
+                    <input type="hidden" name="m" value="admin">
+                    <input type="hidden" name="c" value="seem">
+                    <input type="hidden" name="a" value="index">
+                    <table class="search-tab">
+                        <tbody><tr>
+                            <th width="120">选择分类:</th>
+                            <td>
+                                <select name="search-sort" id="">
+                                    <option value="">全部</option>
+                                </select>
+                            </td>
+                            <th width="70">标题:</th>
+                            <td><input class="common-text" placeholder="关键字" name="pid" value="" id="" type="text"></td>
+                            <th width="70">内容:</th>
+                            <td><input class="common-text" placeholder="关键字" name="rcontent" value="" id="" type="text"></td>
+                            <td><input class="btn btn-primary btn2" value="查询" type="submit"></td>
+                        </tr>
+                    </tbody></table>
                 </form>
             </div>
         </div>
-
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-title">
+                    <div class="result-list">
+                        <a href="insert.html"><i class="icon-font"></i>新增作品</a>
+                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+                        <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
+                    </div>
+                </div>
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tbody><tr>
+                            <th style="text-align:center;">ID</th>
+                            <th style="text-align:center;">标题</th>
+                            <th style="text-align:center;">内容</th>
+                            <th style="text-align:center;">发布人</th>
+                            <th style="text-align:center;">更新时间</th>
+                            <th style="text-align:center;">操作</th>
+                        </tr>
+                        <?php foreach($replys as $reply): ?>
+                        <tr>
+                            <td align="center"><?=$reply['rid']?></td>
+                            <td align="center"><?=$posts[ $reply['pid'] ]?></td>
+                            <td align="center"><?=$reply['rcontent']?></td>
+                            <td align="center"><?=$users[ $reply['uid'] ]?></td>
+                            <td align="center"><?=date('Y-m-d H:i:s',$reply['created_at'])?></td>
+                            <td align="center">
+                                <a class="link-del" href="/index.php?m=admin&c=seem&a=del&rid=<?=$reply['rid']?>">删除</a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody></table>
+                    <div class="list-page"><?=$show_page?></div>
+                </div>
+            </form>
+        </div>
     </div>
 
     <!--/main-->

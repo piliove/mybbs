@@ -97,19 +97,23 @@ class CateController extends CommonController
 		//接收到表单传过来的参数(id)
 		$cid = $_GET['cid'];
 
-		//从数据库中删除
-		$row = M('bbs_cate')->delete($cid);
+		$condition['cid'] = $cid;
+		// echo '<pre>';
+		// print_r($condition['pid']);die;
 
-		//返回受影响的行数
-		if($row){
-			$this->success('删除记录成功!');
-		} else{
-			$this->error('删除记录失败!');
-		}
+ 		//删除该对应的数据
+  		$result_temp1 = M('bbs_cate')->where( $condition )->delete();
+  		$result_temp2 = M('bbs_post')->where( $condition )->delete();
+
+		if ($result_temp1 !== false && $result_temp2 === false) {
+             $this->success('删除成功!','/index.php?m=admin&c=part&a=index');
+         } else {
+             $this->error('删除失败!分区有帖子!');
+         }
 
 	}
 
-	//修改板块
+	//修改板块页面
 	public function edit()
 	{	
 		//接收参数cid
@@ -133,9 +137,20 @@ class CateController extends CommonController
 		$this->display();
 	}
 
+	//修改并保存模块
 	public function update()
 	{
+		$cid = $_GET['cid'];
 
+		$data = $_POST;
+
+		$row = M('bbs_cate')->where("cid='$cid'")->save($data);
+
+		if ( $row ) {
+			$this->success('修改板块成功!');
+		} else {
+			$this->error('修改失败!');
+		}
 	}
 
 }

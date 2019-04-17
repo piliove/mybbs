@@ -76,17 +76,31 @@ class PartController extends CommonController
 	//删除记录
 	public function del()
 	{
-		
 		//接收表单传过来的参数pid
 		$pid = $_GET['pid'];
 
-		$row = M('bbs_part')->delete($pid);
+		// $data = M('bbs_cate')->find($pid);
+		// $pids = $data['pid'];
 
-		if ( $row ) {
-			$this->success('删除成功!','/index.php?m=admin&c=part&a=index');
-		} else {
-			$this->error('删除失败!');
-		}
+		$condition['pid'] = $pid;
+		// echo '<pre>';
+		// print_r($condition['pid']);die;
+
+ 		//删除该对应的数据
+  		$result_temp1 = M('bbs_part')->where( $condition )->delete();
+  		$result_temp2 = M('bbs_cate')->where( $condition )->delete();
+
+		if ($result_temp1 !== false && $result_temp2 === false) {
+             $this->success('删除成功!','/index.php?m=admin&c=part&a=index');
+         } else {
+             $this->error('删除失败!分区有子版块');
+         }
+
+		// if ( $row ) {
+		// 	$this->success('删除成功!','/index.php?m=admin&c=part&a=index');
+		// } else {
+		// 	$this->error('删除失败!');
+		// }
 
 	}
 

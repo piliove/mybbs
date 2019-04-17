@@ -1,0 +1,48 @@
+[ 2019-04-16T11:28:47+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=save
+ERR: Cannot use object of type Think\Model as array
+
+[ 2019-04-16T11:29:01+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=save
+ERR: Cannot use object of type Think\Model as array
+
+[ 2019-04-16T12:43:42+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=save
+ERR: syntax error, unexpected ')'
+
+[ 2019-04-16T12:43:43+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=28
+ERR: syntax error, unexpected ')'
+
+[ 2019-04-16T12:43:46+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=17
+ERR: syntax error, unexpected ')'
+
+[ 2019-04-16T12:58:52+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=17
+ERR: syntax error, unexpected ','
+
+[ 2019-04-16T13:03:29+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=17
+ERR: syntax error, unexpected ')', expecting '('
+
+[ 2019-04-16T13:05:36+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=17
+ERR: syntax error, unexpected ')'
+
+[ 2019-04-16T13:05:57+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=17
+ERR: syntax error, unexpected ')'
+
+[ 2019-04-16T13:06:46+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=17
+ERR: syntax error, unexpected ')'
+
+[ 2019-04-16T13:06:58+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=17
+ERR: syntax error, unexpected ')'
+
+[ 2019-04-16T13:07:11+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=17
+ERR: syntax error, unexpected ')'
+
+[ 2019-04-16T13:14:06+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=17
+ERR: syntax error, unexpected '}'
+
+[ 2019-04-16T13:16:28+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=create&pid=17
+ERR: syntax error, unexpected '==' (T_IS_EQUAL)
+
+[ 2019-04-16T13:22:44+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=save
+ERR: Call to undefined function Home\Controller\boolean()
+
+[ 2019-04-16T13:24:45+08:00 ] 127.0.0.1 /index.php?m=home&c=reply&a=save
+ERR: syntax error, unexpected ')'
+
